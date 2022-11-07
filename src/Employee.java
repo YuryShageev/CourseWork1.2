@@ -6,13 +6,13 @@ public class Employee {
     private int salary;
     private int department;
     public int id;
-    public int counter = 0;
+    public int counter;
 
     public Employee(String name, int salary, int department) {
         this.name = name;
         this.salary = salary;
         this.department = department;
-        this.id = counter++;
+        id = counter++;
 
     }
 
@@ -24,7 +24,7 @@ public class Employee {
         return salary;
     }
 
-    public void setSalar(int salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 
