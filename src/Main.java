@@ -70,4 +70,96 @@ public class Main {
             System.out.println(employee.getName());
         }
     }
+
+    public static void increaseSalary(int percent) {
+        for (Employee employee : employees) {
+            int currentSalary = employee.getSalary();
+            employee.setSalary((int) (currentSalary * (percent / 100f + 1)));
+        }
+    }
+
+    public static Employee findMinSalaryEmployeeOfDepartment(int department) {
+        int minSalary = Integer.MAX_VALUE;
+        Employee result = null;
+        for (Employee employee : employees) {
+            if (employee.getDepartment() != department) {
+                continue;
+            }
+            if (employee.getSalary() < minSalary) {
+                minSalary = employee.getSalary();
+                result = employee;
+            }
+        }
+        return result;
+    }
+
+    public static Employee findMaxSalaryEmployeeOfDepartment(int department) {
+        int maxSalary = Integer.MIN_VALUE;
+        Employee result = null;
+        for (Employee employee : employees) {
+            if (employee.getDepartment() != department) {
+                continue;
+            }
+            if (employee.getSalary() > maxSalary) {
+                maxSalary = employee.getSalary();
+                result = employee;
+            }
+        }
+        return result;
+    }
+
+    public static int calculateTotalSalaryOfDepartment(int teamNumber) {
+        int sum = 0;
+        for (Employee employee : employees) {
+            if (employee.getDepartment() == teamNumber) {
+                sum += employee.getSalary();
+            }
+        }
+        return sum;
+    }
+
+    public static float calculateAverageDepartmentSalary(int teamNumber) {
+        int membersCount = 0;
+        int sum = 0;
+        for (Employee employee : employees) {
+            if (employee.getDepartment() == teamNumber) {
+                sum += employee.getSalary();
+                membersCount++;
+            }
+        }
+        return sum / (float) membersCount;
+    }
+
+    public static void increaseSalaryOfDepartment(int department, int percent) {
+        for (Employee employee : employees) {
+            int currentSalary = employee.getSalary();
+            employee.setSalary((int) (currentSalary * (percent / 100f +1)));
+        }
+    }
+
+    public static void printTeam(int teamNumber) {
+        for (Employee employee : employees) {
+            if (employee.getDepartment() == teamNumber) {
+                System.out.println(employee.getId() + ". " + employee.getName() + ", зарплата: " + employee.getSalary());
+            }
+        }
+    }
+
+    public static void printEmployeesWithLowerSalary(int salary) {
+        for (Employee employee : employees) {
+            if (employee.getSalary() < salary) {
+                System.out.println(employee.getId() + ". " + employee.getName() + ": " + employee.getSalary());
+            }
+        }
+    }
+
+    public static void printEmployeesWithHigherSalary(int salary) {
+        for (Employee employee : employees) {
+            if (employee.getSalary() > salary) {
+                System.out.println(employee.getId() + ". " + employee.getName() + ": " + employee.getSalary());
+            }
+        }
+    }
+
+
 }
